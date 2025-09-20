@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PopChoice – AI Movie Recommendation</title>
+</head>
+<body>
+  <div id="questions-view">
+    <h1>🎬 PopChoice</h1>
+    <p>Answer 3 quick questions:</p>
+    <form id="questions-form">
+      <label>What’s your favorite movie and why?</label><br/>
+      <input type="text" id="q1" required /><br/><br/>
+      
+      <label>New or Classic?</label><br/>
+      <input type="text" id="q2" required /><br/><br/>
+      
+      <label>Fun or Serious?</label><br/>
+      <input type="text" id="q3" required /><br/><br/>
+      
+      <button type="submit" id="submit-btn">Get Recommendation</button>
+    </form>
+  </div>
+
+  <div id="output-view" style="display:none;">
+    <h2 id="movie-title"></h2>
+    <p id="movie-desc"></p>
+    <p id="ai-explanation" style="font-weight:bold;"></p>
+    <button id="reset-btn">Go Again</button>
+  </div>
+
+  <script type="module" src="./src/index.js"></script>
+</body>
+</html>
