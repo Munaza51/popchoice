@@ -1,35 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PopChoice – AI Movie Recommendation</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PopChoice — AI Movie Recommender</title>
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; padding: 24px; background:#f6f7fb; color:#111; }
+    .card { max-width:760px; margin:18px auto; background:white; border-radius:12px; box-shadow:0 6px 18px rgba(16,24,40,0.06); padding:20px; }
+    label { display:block; margin-top:12px; font-weight:600; }
+    input[type="text"], select, textarea { width:100%; padding:10px 12px; margin-top:8px; border-radius:8px; border:1px solid #e6e9ef; }
+    .btn { background:#16a34a; color:white; border:0; padding:12px 18px; border-radius:10px; margin-top:16px; cursor:pointer; font-weight:700; }
+    .btn[disabled]{ opacity:.6; cursor:default; }
+    .movie-title { font-size:22px; font-weight:800; margin-bottom:8px; }
+    .explain { margin-top:12px; padding:12px; background:#f0fdf4; border-radius:8px; border:1px solid #dcfce7; }
+    .go-again { margin-top:14px; background:#0369a1; }
+    .small { color:#6b7280; font-size:13px; margin-top:4px; }
+  </style>
 </head>
 <body>
-  <div id="questions-view">
-    <h1>🎬 PopChoice</h1>
-    <p>Answer 3 quick questions:</p>
-    <form id="questions-form">
-      <label>What’s your favorite movie and why?</label><br/>
-      <input type="text" id="q1" required /><br/><br/>
-      
-      <label>New or Classic?</label><br/>
-      <input type="text" id="q2" required /><br/><br/>
-      
-      <label>Fun or Serious?</label><br/>
-      <input type="text" id="q3" required /><br/><br/>
-      
-      <button type="submit" id="submit-btn">Get Recommendation</button>
+  <div class="card" id="questions-view">
+    <h2>PopChoice — Movie recommender</h2>
+    <p class="small">Answer 3 quick questions and get a movie rec. First run may take a moment while embeddings are created.</p>
+
+    <form id="movie-form">
+      <label>1) What's your favorite movie and why?</label>
+      <input id="q1" type="text" placeholder="e.g. Spider-Man: No Way Home — because it's exciting" required>
+
+      <label>2) New or Classic?</label>
+      <select id="q2">
+        <option value="New">New</option>
+        <option value="Classic">Classic</option>
+      </select>
+
+      <label>3) Fun or Serious?</label>
+      <select id="q3">
+        <option value="Fun">Fun</option>
+        <option value="Serious">Serious</option>
+      </select>
+
+      <button id="submit-btn" class="btn" type="submit">Find my movie ▶</button>
     </form>
+
+    <div id="status" class="small"></div>
   </div>
 
-  <div id="output-view" style="display:none;">
-    <h2 id="movie-title"></h2>
-    <p id="movie-desc"></p>
-    <p id="ai-explanation" style="font-weight:bold;"></p>
-    <button id="reset-btn">Go Again</button>
+  <div class="card" id="result-view" style="display:none;">
+    <div id="movie-box"></div>
+    <button id="again" class="btn go-again">Go Again</button>
   </div>
 
-  <script type="module" src="./src/index.js"></script>
+  <script type="module" src="/src/index.js"></script>
 </body>
 </html>
