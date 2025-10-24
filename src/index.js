@@ -1,4 +1,4 @@
-// src/index.js
+
 import MOVIES from './content.js';
 import { getMovieRecommendation } from './aiService.js';
 
