@@ -1,112 +1,178 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PopChoice — AI Movie Recommender</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* Reset & base */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: #fff8f2; color: #111; padding: 2rem; }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PopChoice — AI Movie Recommender</title>
+<style>
+  /* رنگ‌ها و فونت‌ها */
+  body {
+    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    padding: 24px;
+    background: #f0f8ff;
+    color: #333;
+  }
 
-    /* Card styling */
-    .card {
-      max-width: 720px;
-      margin: 2rem auto;
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 2rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
+  h2 {
+    color: #1e90ff;
+    text-align: center;
+    margin-bottom: 6px;
+  }
 
-    h2 { font-weight: 700; font-size: 2rem; color: #ff6b81; margin-bottom: 0.5rem; }
-    .small { font-size: 0.875rem; color: #6b7280; }
+  .small {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+  }
 
-    /* Form styling */
-    label { font-weight: 600; margin-top: 1rem; display: block; color: #3b3b98; }
-    input[type="text"], select, textarea {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      margin-top: 0.5rem;
-      border-radius: 16px;
-      border: 1px solid #ffd6d6;
-      background: #fff0f5;
-      font-size: 1rem;
-      transition: border 0.2s ease, box-shadow 0.2s ease;
-    }
-    input[type="text"]:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: #ff6b81;
-      box-shadow: 0 0 8px rgba(255,107,129,0.3);
-    }
+  /* کارت‌ها */
+  .card {
+    max-width: 760px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    padding: 24px;
+    transition: transform 0.2s;
+  }
 
-    select { cursor: pointer; }
+  .card:hover {
+    transform: translateY(-3px);
+  }
 
-    .btn {
-      margin-top: 1.5rem;
-      padding: 0.85rem 1.5rem;
-      font-weight: 700;
-      font-size: 1rem;
-      border: none;
-      border-radius: 16px;
-      cursor: pointer;
-      background: linear-gradient(90deg, #ffd6d6, #ff6b81);
-      color: #fff;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-    .btn:hover:not([disabled]) { transform: scale(1.05); }
-    .btn[disabled] { opacity: 0.6; cursor: default; }
+  label {
+    display: block;
+    margin-top: 16px;
+    font-weight: 600;
+    color: #333;
+  }
 
-    /* Result box */
-    #movie-box { display: flex; flex-direction: column; gap: 1rem; }
-    .explain-line {
-      padding: 1rem;
-      background: #fffaed;
-      border-radius: 16px;
-      border: 1px solid #fff2cc;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      font-size: 1rem;
-      color: #3b3b98;
-    }
-    .movie-title {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: #ff6b81;
-      margin-bottom: 0.5rem;
-    }
+  input[type="text"], select, textarea {
+    width: 100%;
+    padding: 12px 14px;
+    margin-top: 8px;
+    border-radius: 10px;
+    border: 1px solid #d0e0ff;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.2s;
+  }
 
-    /* "Go again" button */
-    .go-again { background: linear-gradient(90deg, #6fffd6, #00b894); margin-top: 1rem; color: #fff; }
-    .go-again:hover { transform: scale(1.05); }
+  input[type="text"]:focus, select:focus, textarea:focus {
+    border: 2px solid #1e90ff;
+  }
 
-    /* Status message */
-    #status { font-size: 0.875rem; color: #ff6b81; margin-top: 0.5rem; }
+  .btn {
+    display: inline-block;
+    background: #32cd32;
+    color: white;
+    border: 0;
+    padding: 14px 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    transition: background 0.2s, transform 0.1s;
+  }
 
-    /* Responsive adjustments */
-    @media (max-width: 480px) {
-      .card { padding: 1.5rem; }
-      h2 { font-size: 1.5rem; }
-      .movie-title { font-size: 1.25rem; }
-    }
-  </style>
+  .btn:hover {
+    background: #28a428;
+    transform: translateY(-2px);
+  }
+
+  .btn[disabled] {
+    opacity: 0.6;
+    cursor: default;
+    transform: none;
+  }
+
+  /* باکس فیلم */
+  #movie-box {
+    text-align: center;
+  }
+
+  .movie-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #ff6347;
+  }
+
+  .movie-desc {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .explain {
+    margin-top: 12px;
+    padding: 16px;
+    background: #f0fff0;
+    border-radius: 12px;
+    border: 1px solid #c6f6c6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    font-size: 15px;
+    color: #333;
+  }
+
+  .go-again {
+    background: #1e90ff;
+  }
+
+  #status {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 14px;
+    color: #ff4500;
+  }
+</style>
 </head>
 <body>
-
   <div class="card" id="questions-view">
-    <h2>PopChoice 🎬</h2>
-    <p class="small">Answer 3 quick questions to get a fun movie recommendation instantly!</p>
+    <h2>PopChoice — Movie Recommender</h2>
+    <p class="small">Answer a few questions and get your movie recommendation!</p>
 
     <form id="movie-form">
       <label>1) What's your favorite movie and why?</label>
-      <input id="q1" type="text" placeholder="e.g. Spider-Man: No Way Home — because it's exciting" required>
+      <input id="q1" type="text" placeholder="e.g. Spider-Man: No Way Home — exciting adventure" required>
+
+      <label>2) New or Classic?</label>
+      <select id="q2">
+        <option value="New">New</option>
+        <option value="Classic">Classic</option>
+      </select>
+
+      <label>3) Fun, Serious, Inspiring, or Scary?</label>
+      <select id="q3">
+        <option value="Fun">Fun</option>
+        <option value="Serious">Serious</option>
+        <option value="Inspiring">Inspiring</option>
+        <option value="Scary">Scary</option>
+      </select>
+
+      <button id="submit-btn" class="btn" type="submit">Find My Movie ▶</button>
+    </form>
+    <div id="status"></div>
+  </div>
+
+  <div class="card" id="result-view" style="display:none;">
+    <div id="movie-box">
+      <!-- Movie Title -->
+      <!-- Description -->
+      <!-- AI explanation -->
+    </div>
+    <button id="again" class="btn go-again">Go Again</button>
+  </div>
+
+  <script type="module" src="./src/index.js"></script>
+</body>
+</html>      <input id="q1" type="text" placeholder="e.g. Spider-Man: No Way Home — because it's exciting" required>
 
       <label>2) New or Classic?</label>
       <select id="q2">
