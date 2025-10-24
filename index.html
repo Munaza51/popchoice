@@ -1,228 +1,273 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>PopChoice — AI Movie Recommender</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PopChoice — AI Movie Recommender</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #fff9f0; /* روشن و شاد */
-  color: #333;
-}
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f8ff;
+      color: #333;
+    }
 
-/* Navbar */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 24px;
-  background: #ff7f50; /* نارنجی شاد */
-  color: white;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      background: #32cd32;
+      color: white;
+    }
 
-nav .logo {
-  font-weight: 700;
-  font-size: 26px;
-}
+    nav .logo {
+      font-weight: 700;
+      font-size: 24px;
+    }
 
-nav .burger {
-  font-size: 24px;
-  cursor: pointer;
-}
+    nav .burger {
+      font-size: 24px;
+      cursor: pointer;
+    }
 
-/* Hero Section */
-.hero {
-  position: relative;
-  background: url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-  height: 320px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-}
+    .hero {
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
 
-.hero h1 {
-  font-size: 34px;
-  font-weight: 700;
-  background: rgba(255, 127, 80, 0.6); /* کمی شفاف نارنجی */
-  padding: 16px 24px;
-  border-radius: 16px;
-}
+    .hero h1 {
+      font-size: 32px;
+      font-weight: 700;
+      background: rgba(0,0,0,0.4);
+      padding: 12px 20px;
+      border-radius: 12px;
+    }
 
-/* Intro */
-.intro {
-  text-align: center;
-  max-width: 700px;
-  margin: 24px auto;
-  font-size: 18px;
-  color: #555;
-}
+    .intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 24px auto;
+      font-size: 18px;
+      color: #555;
+    }
 
-/* Cards */
-.card {
-  max-width: 760px;
-  margin: 24px auto;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px; /* فاصله مساوی بین اجزا */
-}
+    .card {
+      max-width: 760px;
+      margin: 24px auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      padding: 24px;
+    }
 
-label {
-  font-weight: 600;
-  margin-bottom: 6px;
-}
+    label {
+      display: block;
+      margin-top: 16px;
+      font-weight: 600;
+    }
 
-/* باکس تمام سوالات (text input و select) یکسان */
-input[type="text"],
-select {
-  width: 100%;
-  padding: 14px;
-  margin-top: 8px;        /* فاصله از label بالایی */
-  border-radius: 12px;    /* گوشه‌های گرد */
-  border: 2px solid #ffe4b5; /* رنگ شاد و روشن */
-  font-size: 14px;
-  outline: none;
-  box-sizing: border-box; /* تضمین اندازه دقیق */
-  transition: border 0.3s, box-shadow 0.3s;
-}
+    input[type="text"], select {
+      width: 100%;
+      padding: 12px 14px;
+      margin-top: 8px;
+      border-radius: 10px;
+      border: 1px solid #d0e0ff;
+      font-size: 14px;
+      outline: none;
+    }
 
-input[type="text"]:focus,
-select:focus {
-  border-color: #ffb347;   /* رنگ جذاب هنگام focus */
-  box-shadow: 0 0 6px rgba(255, 179, 71, 0.4);
-}
+    input[type="text"]:focus, select:focus {
+      border: 2px solid #1e90ff;
+    }
 
-/* Buttons */
-.btn {
-  display: inline-block;
-  background: #ffb347; /* رنگ شاد */
-  color: white;
-  border: 0;
-  padding: 14px 20px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 16px;
-}
+    .btn {
+      display: inline-block;
+      background: #32cd32;
+      color: white;
+      border: 0;
+      padding: 14px 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 16px;
+    }
 
-.btn:hover {
-  background: #ffcc70;
-}
+    .btn:hover {
+      background: #28b428;
+    }
 
-.btn[disabled] {
-  opacity: 0.6;
-  cursor: default;
-}
+    .btn[disabled] {
+      opacity: 0.6;
+      cursor: default;
+    }
 
-/* Movie Result */
-#movie-box {
-  display: flex;
-  flex-direction: column;
-  gap: 12px; /* فاصله مساوی بین عنوان، توضیح و AI */
-  align-items: center;
-}
+    #movie-box {
+      text-align: center;
+    }
 
-.movie-title {
-  font-size: 26px;
-  font-weight: 800;
-  color: #ff6f61;
-  text-align: center;
-}
+    .movie-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ff6347;
+      margin-bottom: 12px;
+    }
 
-.movie-desc {
-  font-size: 16px;
-  color: #555;
-  text-align: center;
-  line-height: 1.5;
-}
+    .movie-desc {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
 
-.explain {
-  margin-top: 12px;
-  padding: 16px;
-  background: #f0fff0; /* سبز روشن */
-  border-radius: 12px;
-  border: 1px solid #c6f6c6;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  width: 100%;
-  text-align: center;
-}
+    .explain {
+      margin-top: 12px;
+      padding: 16px;
+      background: #f0fff0;
+      border-radius: 12px;
+      border: 1px solid #c6f6c6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
 
-/* Status */
-#status {
-  text-align: center;
-  font-size: 14px;
-  color: #ff4500;
-}
-</style>
+    #status {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 14px;
+      color: #ff4500;
+    }
+
+    .footer-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding: 20px;
+      background: white;
+      border-top: 1px solid #eee;
+    }
+
+    .footer-actions .btn-signup {
+      background: #1e90ff;
+      color: white;
+    }
+
+    .footer-actions .btn-login {
+      background: #ccc;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 24px;
+        padding: 8px 12px;
+      }
+
+      .card {
+        margin: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Navbar -->
-<nav>
-  <div class="logo">PopChoice</div>
-  <div class="burger">&#9776;</div>
-</nav>
+  <nav>
+    <div class="logo">PopChoice</div>
+    <div class="burger">&#9776;</div>
+  </nav>
 
-<!-- Hero -->
-<section class="hero">
-  <h1>We’re here to recommend your next favorite movie!</h1>
-</section>
+  <section class="hero">
+    <h1>We’re here to recommend your next favorite movie!</h1>
+  </section>
 
-<!-- Intro -->
-<div class="intro">
-  Answer the questions to get a shared movie recommendation for your movie night!
-</div>
-
-<!-- Questions Form -->
-<div class="card" id="questions-view">
-  <h2>Answer the questions:</h2>
-
-  <form id="movie-form">
-    <label>1) What's your favorite movie and why?</label>
-    <input id="q1" type="text" placeholder="e.g. Spider-Man: No Way Home — exciting adventure" required>
-
-    <label>2) New or Classic?</label>
-    <select id="q2">
-      <option value="New">New</option>
-      <option value="Classic">Classic</option>
-    </select>
-
-    <label>3) Fun, Serious, Inspiring, or Scary?</label>
-    <select id="q3">
-      <option value="Fun">Fun</option>
-      <option value="Serious">Serious</option>
-      <option value="Inspiring">Inspiring</option>
-      <option value="Scary">Scary</option>
-    </select>
-
-    <button id="submit-btn" class="btn" type="submit">Find My Movie ▶</button>
-  </form>
-  <div id="status"></div>
-</div>
-
-<!-- Movie Result -->
-<div class="card" id="result-view" style="display:none;">
-  <div id="movie-box">
-    <div class="movie-title"></div>
-    <div class="movie-desc"></div>
-    <div class="explain"></div>
+  <div class="intro">
+    Answer the questions to get a shared movie recommendation for your movie night!
   </div>
-  <button id="again" class="btn go-again">Go Again</button>
-</div>
 
-<script type="module" src="./src/index.js"></script>
+  <div class="card" id="questions-view">
+    <h2>Answer the questions:</h2>
+    <form id="movie-form">
+      <label>1) What's your favorite movie and why?</label>
+      <input id="q1" type="text" placeholder="e.g. Spider-Man: No Way Home — exciting adventure" required>
+
+      <label>2) New or Classic?</label>
+      <select id="q2">
+        <option value="New">New</option>
+        <option value="Classic">Classic</option>
+      </select>
+
+      <label>3) Fun, Serious, Inspiring, or Scary?</label>
+      <select id="q3">
+        <option value="Fun">Fun</option>
+        <option value="Serious">Serious</option>
+        <option value="Inspiring">Inspiring</option>
+        <option value="Scary">Scary</option>
+      </select>
+
+      <button id="submit-btn" class="btn" type="submit">Let's Go</button>
+    </form>
+    <div id="status"></div>
+  </div>
+
+  <div class="card" id="result-view" style="display:none;">
+    <div id="movie-box">
+      <div class="movie-title"></div>
+      <div class="movie-desc"></div>
+      <div class="explain"></div>
+    </div>
+    <button id="again" class="btn">Go Again</button>
+  </div>
+
+  <div class="footer-actions">
+    <button class="btn btn-signup">Sign up</button>
+    <button class="btn btn-login">Log in</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("movie-form");
+      const questionsView = document.getElementById("questions-view");
+      const resultView = document.getElementById("result-view");
+      const movieTitle = document.querySelector(".movie-title");
+      const movieDesc = document.querySelector(".movie-desc");
+      const explain = document.querySelector(".explain");
+      const againBtn = document.getElementById("again");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const q1 = document.getElementById("q1").value;
+        const q2 = document.getElementById("q2").value;
+        const q3 = document.getElementById("q3").value;
+
+        movieTitle.textContent = "School of Rock (2009)";
+        movieDesc.textContent = "A fun and stupid movie about a wannabe rocker turned fraud rock substitute teacher who ends up coaching a group of kids to win the Battle of the Bands.";
+        explain.textContent = `Based on your answers:
+- You like: ${q1}
+- You prefer: ${q2}
+- You want something: ${q3}
+So we think you'll enjoy this!`;
+
+        questionsView.style.display = "none";
+        resultView.style.display = "block";
+      });
+
+      againBtn.addEventListener("click", () => {
+        resultView.style.display = "none";
+        questionsView.style.display = "block";
+        form.reset();
+      });
+    });
+  </script>
 </body>
 </html>
