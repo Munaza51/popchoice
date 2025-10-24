@@ -239,41 +239,6 @@ select:focus {
     <button class="btn btn-login">Log in</button>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const form = document.getElementById("movie-form");
-      const questionsView = document.getElementById("questions-view");
-      const resultView = document.getElementById("result-view");
-      const movieTitle = document.querySelector(".movie-title");
-      const movieDesc = document.querySelector(".movie-desc");
-      const explain = document.querySelector(".explain");
-      const againBtn = document.getElementById("again");
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const q1 = document.getElementById("q1").value;
-        const q2 = document.getElementById("q2").value;
-        const q3 = document.getElementById("q3").value;
-
-        movieTitle.textContent = "School of Rock (2009)";
-        movieDesc.textContent = "A fun and stupid movie about a wannabe rocker turned fraud rock substitute teacher who ends up coaching a group of kids to win the Battle of the Bands.";
-        explain.textContent = `Based on your answers:
-- You like: ${q1}
-- You prefer: ${q2}
-- You want something: ${q3}
-So we think you'll enjoy this!`;
-
-        questionsView.style.display = "none";
-        resultView.style.display = "block";
-      });
-
-      againBtn.addEventListener("click", () => {
-        resultView.style.display = "none";
-        questionsView.style.display = "block";
-        form.reset();
-      });
-    });
-  </script>
+  <script type="module" src="./src/index.js"></script>
 </body>
 </html>
