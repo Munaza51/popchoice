@@ -5,28 +5,72 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>PopChoice — AI Movie Recommender</title>
   <style>
-    body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; padding:24px; background:#f6f7fb; color:#111; }
-    .card { max-width:760px; margin:18px auto; background:white; border-radius:12px; box-shadow:0 6px 18px rgba(16,24,40,0.06); padding:20px; }
-    label { display:block; margin-top:12px; font-weight:600; }
-    input[type="text"], select, textarea { width:100%; padding:10px 12px; margin-top:8px; border-radius:8px; border:1px solid #e6e9ef; }
-    .btn { background:#16a34a; color:white; border:0; padding:12px 18px; border-radius:10px; margin-top:16px; cursor:pointer; font-weight:700; }
-    .btn[disabled]{ opacity:.6; cursor:default; }
-    .movie-title { font-size:22px; font-weight:800; margin-bottom:8px; }
-    .explain {
-  margin-top: 12px;
-  padding: 12px;
-  background: #f0fdf4;
-  border-radius: 8px;
-  border: 1px solid #dcfce7;
-  
-  /* اینها مهمه */
-  white-space: pre-wrap;    /* خطوط و break ها حفظ میشن */
-  word-wrap: break-word;    /* کلمات طولانی می شکنه و نمیره بیرون */
-  overflow-wrap: break-word; /* برای پشتیبانی بهتر مرورگرها */
-  max-width: 100%;          /* باکس از container خارج نمیشه */
-    } 
-    .go-again { margin-top:14px; background:#0369a1; }
-    .small { color:#6b7280; font-size:13px; margin-top:4px; }
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      padding: 24px;
+      background: #f6f7fb;
+      color: #111;
+    }
+    .card {
+      max-width: 760px;
+      margin: 18px auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+      padding: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 600;
+    }
+    input[type="text"], select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 8px;
+      border-radius: 8px;
+      border: 1px solid #e6e9ef;
+    }
+    .btn {
+      background: #16a34a;
+      color: white;
+      border: 0;
+      padding: 12px 18px;
+      border-radius: 10px;
+      margin-top: 16px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .btn[disabled] {
+      opacity: 0.6;
+      cursor: default;
+    }
+    .movie-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    /* باکس AI پاسخ‌ها */
+    .explain-line {
+      margin-top: 10px;
+      padding: 12px;
+      background: #f0fdf4;
+      border-radius: 8px;
+      border: 1px solid #dcfce7;
+      white-space: pre-wrap;      /* حفظ خطوط و break ها */
+      word-wrap: break-word;      /* شکستن کلمات طولانی */
+      overflow-wrap: break-word;  /* پشتیبانی مرورگرها */
+      max-width: 100%;            /* باکس از container خارج نشه */
+    }
+    .go-again {
+      margin-top: 14px;
+      background: #0369a1;
+    }
+    .small {
+      color: #6b7280;
+      font-size: 13px;
+      margin-top: 4px;
+    }
   </style>
 </head>
 <body>
