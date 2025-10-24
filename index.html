@@ -4,14 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>PopChoice — AI Movie Recommender</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Roboto+Slab:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Roboto Slab', serif;
       margin: 0;
       padding: 0;
-      background: #f0f8ff;
+      background: #e6f2ff;
       color: #333;
     }
 
@@ -20,13 +22,14 @@
       justify-content: space-between;
       align-items: center;
       padding: 16px 24px;
-      background: #32cd32;
+      background: #1e90ff;
       color: white;
     }
 
     nav .logo {
-      font-weight: 700;
-      font-size: 24px;
+      font-family: 'Carter One', cursive;
+      font-weight: 400;
+      font-size: 28px;
     }
 
     nav .burger {
@@ -46,9 +49,9 @@
     }
 
     .hero h1 {
+      font-family: 'Carter One', cursive;
       font-size: 32px;
-      font-weight: 700;
-      background: rgba(0,0,0,0.4);
+      background: rgba(30,144,255,0.3);
       padding: 12px 20px;
       border-radius: 12px;
     }
@@ -58,7 +61,8 @@
       max-width: 700px;
       margin: 24px auto;
       font-size: 18px;
-      color: #555;
+      color: #004080;
+      font-family: 'Roboto Slab', serif;
     }
 
     .card {
@@ -68,6 +72,7 @@
       border-radius: 16px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.08);
       padding: 24px;
+      font-family: 'Roboto Slab', serif;
     }
 
     label {
@@ -76,47 +81,42 @@
       font-weight: 600;
     }
 
-    /* باکس تمام سوالات (text input و select) یکسان */
-input[type="text"],
-select {
-  width: 100%;
-  padding: 14px;
-  margin-top: 8px;        /* فاصله از label بالایی */
-  border-radius: 12px;    /* گوشه‌های گرد */
-  border: 2px solid #ffe4b5; /* رنگ شاد و روشن */
-  font-size: 14px;
-  outline: none;
-  box-sizing: border-box; /* تضمین اندازه دقیق */
-  transition: border 0.3s, box-shadow 0.3s;
-}
+    input[type="text"],
+    select,
+    input[type="number"] {
+      width: 100%;
+      padding: 14px;
+      margin-top: 8px;
+      border-radius: 12px;
+      border: 2px solid #99ccff;
+      font-size: 14px;
+      outline: none;
+      box-sizing: border-box;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
 
-input[type="text"]:focus,
-select:focus {
-  border-color: #ffb347;   /* رنگ جذاب هنگام focus */
-  box-shadow: 0 0 6px rgba(255, 179, 71, 0.4);
-}
+    input[type="text"]:focus,
+    select:focus,
+    input[type="number"]:focus {
+      border-color: #1e90ff;
+      box-shadow: 0 0 6px rgba(30,144,255,0.4);
+    }
 
     .btn {
       display: inline-block;
-      background: #32cd32;
+      background: #1e90ff;
       color: white;
       border: 0;
       padding: 14px 20px;
       border-radius: 12px;
-      margin-top: 20px;
+      margin-top: 16px;
       cursor: pointer;
       font-weight: 700;
       font-size: 16px;
     }
 
-    .btn:hover {
-      background: #28b428;
-    }
-
-    .btn[disabled] {
-      opacity: 0.6;
-      cursor: default;
-    }
+    .btn:hover { background: #007acc; }
+    .btn[disabled] { opacity: 0.6; cursor: default; }
 
     #movie-box {
       text-align: center;
@@ -124,14 +124,16 @@ select:focus {
 
     .movie-title {
       font-size: 24px;
-      font-weight: 800;
-      color: #ff6347;
+      font-weight: 700;
+      color: #004080;
       margin-bottom: 12px;
+      text-align: center;
+      font-family: 'Carter One', cursive;
     }
 
     .movie-desc {
       font-size: 16px;
-      color: #555;
+      color: #333;
       margin-bottom: 12px;
       line-height: 1.5;
     }
@@ -139,9 +141,9 @@ select:focus {
     .explain {
       margin-top: 12px;
       padding: 16px;
-      background: #f0fff0;
+      background: #e6f0ff;
       border-radius: 12px;
-      border: 1px solid #c6f6c6;
+      border: 1px solid #cce0ff;
       white-space: pre-wrap;
       word-wrap: break-word;
       overflow-wrap: break-word;
@@ -151,37 +153,20 @@ select:focus {
       text-align: center;
       margin-top: 12px;
       font-size: 14px;
-      color: #ff4500;
+      color: #004080;
     }
 
-    .footer-actions {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      padding: 20px;
-      background: white;
-      border-top: 1px solid #eee;
-    }
-
-    .footer-actions .btn-signup {
-      background: #1e90ff;
-      color: white;
-    }
-
-    .footer-actions .btn-login {
-      background: #ccc;
-      color: #333;
+    .person-count {
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 12px;
+      color: #1e90ff;
     }
 
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 24px;
-        padding: 8px 12px;
-      }
-
-      .card {
-        margin: 16px;
-      }
+      .hero h1 { font-size: 24px; padding: 8px 12px; }
+      .card { margin: 16px; }
     }
   </style>
 </head>
@@ -201,7 +186,22 @@ select:focus {
   </div>
 
   <div class="card" id="questions-view">
-    <h2>Answer the questions:</h2>
+    <h2>Movie Night Setup:</h2>
+    <label>How many people are attending?</label>
+    <input id="num-people" type="number" min="1" value="1">
+
+    <label>How much time do you have?</label>
+    <select id="time-available">
+      <option value="Short (<1hr)">Short (&lt;1hr)</option>
+      <option value="Medium (1-2hr)">Medium (1-2hr)</option>
+      <option value="Long (>2hr)">Long (&gt;2hr)</option>
+    </select>
+
+    <button id="start-btn" class="btn" type="button">Start</button>
+  </div>
+
+  <div class="card" id="person-view" style="display:none;">
+    <div class="person-count">Person <span id="person-number">1</span></div>
     <form id="movie-form">
       <label>1) What's your favorite movie and why?</label>
       <input id="q1" type="text" placeholder="e.g. Spider-Man: No Way Home — exciting adventure" required>
@@ -220,7 +220,10 @@ select:focus {
         <option value="Scary">Scary</option>
       </select>
 
-      <button id="submit-btn" class="btn" type="submit">Let's Go</button>
+      <label>4) Which famous film person would you love to be stranded on an island with and why?</label>
+      <input id="q4" type="text" placeholder="e.g. Tom Hanks — he’s resourceful" required>
+
+      <button id="next-person" class="btn" type="button">Next Person</button>
     </form>
     <div id="status"></div>
   </div>
@@ -231,10 +234,9 @@ select:focus {
       <div class="movie-desc"></div>
       <div class="explain"></div>
     </div>
-    <button id="again" class="btn">Go Again</button>
+    <button id="next-movie" class="btn">Next Movie</button>
+    <button id="again" class="btn">Start Over</button>
   </div>
-
-  
 
   <script type="module" src="./src/index.js"></script>
 </body>
