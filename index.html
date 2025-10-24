@@ -12,7 +12,19 @@
     .btn { background:#16a34a; color:white; border:0; padding:12px 18px; border-radius:10px; margin-top:16px; cursor:pointer; font-weight:700; }
     .btn[disabled]{ opacity:.6; cursor:default; }
     .movie-title { font-size:22px; font-weight:800; margin-bottom:8px; }
-    .explain { margin-top:12px; padding:12px; background:#f0fdf4; border-radius:8px; border:1px solid #dcfce7; }
+    .explain {
+  margin-top: 12px;
+  padding: 12px;
+  background: #f0fdf4;
+  border-radius: 8px;
+  border: 1px solid #dcfce7;
+  
+  /* اینها مهمه */
+  white-space: pre-wrap;    /* خطوط و break ها حفظ میشن */
+  word-wrap: break-word;    /* کلمات طولانی می شکنه و نمیره بیرون */
+  overflow-wrap: break-word; /* برای پشتیبانی بهتر مرورگرها */
+  max-width: 100%;          /* باکس از container خارج نمیشه */
+    } 
     .go-again { margin-top:14px; background:#0369a1; }
     .small { color:#6b7280; font-size:13px; margin-top:4px; }
   </style>
