@@ -1,6 +1,5 @@
-
-import MOVIES from './content.js';
 import { getMovieRecommendation } from './aiService.js';
+import MOVIES from './content.js';
 
 const form = document.getElementById('movie-form');
 const statusEl = document.getElementById('status');
@@ -12,30 +11,24 @@ const againBtn = document.getElementById('again');
 
 function setStatus(t) { statusEl.innerText = t || ''; }
 
-form.addEventListener('submit', async (ev) => {
-  ev.preventDefault();
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
   submitBtn.disabled = true;
 
   const q1 = document.getElementById('q1').value.trim();
   const q2 = document.getElementById('q2').value;
   const q3 = document.getElementById('q3').value;
-  const userText = `Favorite: ${q1}. Mood: ${q2}. Tone: ${q3}.`;
-
-  setStatus('Thinking...');
+  const userText = `Favorite: ${q1}. New or Classic: ${q2}. Fun or Serious: ${q3}.`;
 
   try {
-    const rec = await getMovieRecommendation(userText, MOVIES);
-
+    setStatus('Thinking...');
+    const recommendation = await getMovieRecommendation(userText);
     questionsView.style.display = 'none';
     resultView.style.display = 'block';
-    movieBox.innerHTML = `
-      <div class="movie-title">${rec.title}</div>
-      <div class="explain">${rec.explanation}</div>
-    `;
+    movieBox.innerHTML = `<pre>${recommendation}</pre>`;
     setStatus('');
   } catch (err) {
-    console.error(err);
-    setStatus('AI service error. Check console.');
+    setStatus('Error: ' + err.message);
   } finally {
     submitBtn.disabled = false;
   }
@@ -44,6 +37,4 @@ form.addEventListener('submit', async (ev) => {
 againBtn.addEventListener('click', () => {
   resultView.style.display = 'none';
   questionsView.style.display = 'block';
-  form.reset();
-  setStatus('');
 });
