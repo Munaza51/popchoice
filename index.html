@@ -83,17 +83,24 @@ label {
   margin-bottom: 6px;
 }
 
-input[type="text"], select, textarea {
+/* باکس تمام سوالات (text input و select) یکسان */
+input[type="text"],
+select {
   width: 100%;
   padding: 14px;
-  border-radius: 12px;
-  border: 1px solid #ffe4b5; /* روشن و شاد */
+  margin-top: 8px;        /* فاصله از label بالایی */
+  border-radius: 12px;    /* گوشه‌های گرد */
+  border: 2px solid #ffe4b5; /* رنگ شاد و روشن */
   font-size: 14px;
   outline: none;
+  box-sizing: border-box; /* تضمین اندازه دقیق */
+  transition: border 0.3s, box-shadow 0.3s;
 }
 
-input[type="text"]:focus, select:focus {
-  border: 2px solid #ffb347; /* رنگ جذاب هنگام focus */
+input[type="text"]:focus,
+select:focus {
+  border-color: #ffb347;   /* رنگ جذاب هنگام focus */
+  box-shadow: 0 0 6px rgba(255, 179, 71, 0.4);
 }
 
 /* Buttons */
