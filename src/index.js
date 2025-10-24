@@ -23,9 +23,16 @@ form.addEventListener('submit', async (e) => {
   try {
     setStatus('Thinking...');
     const recommendation = await getMovieRecommendation(userText);
+    
     questionsView.style.display = 'none';
     resultView.style.display = 'block';
-    movieBox.innerHTML = `<pre>${recommendation}</pre>`;
+
+    // ✅ نمایش AI در خطوط جدا و باکس‌های منظم
+    movieBox.innerHTML = recommendation
+      .split('\n')
+      .map(line => `<div class="explain-line">${line}</div>`)
+      .join('');
+
     setStatus('');
   } catch (err) {
     setStatus('Error: ' + err.message);
