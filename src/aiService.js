@@ -1,5 +1,5 @@
 export async function getMovieRecommendation(userText, movies) {
-  const API_KEY = 'YOUR_OPENROUTER_API_KEY'; // Replace with your key
+  const API_KEY = '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'; 
 
   const prompt = `
 You are a friendly movie recommender. 
