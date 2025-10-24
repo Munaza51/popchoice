@@ -76,19 +76,25 @@
       font-weight: 600;
     }
 
-    input[type="text"], select {
-      width: 100%;
-      padding: 12px 14px;
-      margin-top: 8px;
-      border-radius: 10px;
-      border: 1px solid #d0e0ff;
-      font-size: 14px;
-      outline: none;
-    }
+    /* باکس تمام سوالات (text input و select) یکسان */
+input[type="text"],
+select {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;        /* فاصله از label بالایی */
+  border-radius: 12px;    /* گوشه‌های گرد */
+  border: 2px solid #ffe4b5; /* رنگ شاد و روشن */
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box; /* تضمین اندازه دقیق */
+  transition: border 0.3s, box-shadow 0.3s;
+}
 
-    input[type="text"]:focus, select:focus {
-      border: 2px solid #1e90ff;
-    }
+input[type="text"]:focus,
+select:focus {
+  border-color: #ffb347;   /* رنگ جذاب هنگام focus */
+  box-shadow: 0 0 6px rgba(255, 179, 71, 0.4);
+}
 
     .btn {
       display: inline-block;
