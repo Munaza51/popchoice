@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>PopChoice — AI Movie Recommender</title>
   <style>
-    body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; padding: 24px; background:#f6f7fb; color:#111; }
+    body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; padding:24px; background:#f6f7fb; color:#111; }
     .card { max-width:760px; margin:18px auto; background:white; border-radius:12px; box-shadow:0 6px 18px rgba(16,24,40,0.06); padding:20px; }
     label { display:block; margin-top:12px; font-weight:600; }
     input[type="text"], select, textarea { width:100%; padding:10px 12px; margin-top:8px; border-radius:8px; border:1px solid #e6e9ef; }
@@ -20,7 +20,7 @@
 <body>
   <div class="card" id="questions-view">
     <h2>PopChoice — Movie recommender</h2>
-    <p class="small">Answer 3 quick questions and get a movie rec. First run may take a moment while embeddings are created.</p>
+    <p class="small">Answer 3 quick questions and get a movie recommendation instantly.</p>
 
     <form id="movie-form">
       <label>1) What's your favorite movie and why?</label>
@@ -49,6 +49,6 @@
     <button id="again" class="btn go-again">Go Again</button>
   </div>
 
-  <script type="module" src="/src/index.js"></script>
+  <script type="module" src="./src/index.js"></script>
 </body>
 </html>
